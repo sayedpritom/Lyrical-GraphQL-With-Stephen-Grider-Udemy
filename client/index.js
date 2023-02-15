@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
+import SongList from './components/SongList';
 
 const client = new ApolloClient({})
 // a new instance of apollo client to be passed into apollo provider
@@ -10,7 +11,7 @@ const client = new ApolloClient({})
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-    <div>Lyrical</div>
+      <SongList/>
   </ApolloProvider>
   )
 };
