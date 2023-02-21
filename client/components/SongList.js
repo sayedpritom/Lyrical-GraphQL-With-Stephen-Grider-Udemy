@@ -8,7 +8,7 @@ class SongList extends Component {
 
     onSongDelete(id) {
         this.props.mutate({ variables: { id } })
-        console.log(id);
+            .then(() => this.props.data.refetch())
     }
 
     // helper method
@@ -45,8 +45,8 @@ class SongList extends Component {
 
 
 const mutation = gql`
-    mutation DeleteSong($id: ID) {
-        deleteSong(id: $id) {
+    mutation DeleteSong($id:ID) {
+        deleteSong(id:$id) {
             id
         }
     }
