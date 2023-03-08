@@ -17,6 +17,7 @@ class SongCreate extends Component {
     // event is an object here that represents event
     onSubmit(event) {
         event.preventDefault();
+        // this.props.mutate is a mutation function
         this.props.mutate({
             variables: { title: this.state.title },
             refetchQueries: [{ query }]
