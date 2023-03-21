@@ -11,21 +11,29 @@ class LyricCreate extends Component {
     onSubmit(event) {
         event.preventDefault()
 
+        console.log(this.state.content, this.props.songId);
+
         this.props.mutate({
             variables: {
                 content: this.state.content,
                 songId: this.props.songId
             }
+        }).catch((err) => {
+            const errors = err.graphQLErrors.map((error) => {
+                return error.message;
+              });
+            console.log(errors);
         })
+
     }
 
     render() {
         return (
             <form onSubmit={this.onSubmit.bind(this)}>
                 <label>Add a Lyric</label>
-                <input 
-                    value = {this.state.content}
-                    onChange = {event => this.setState({content: event.target.value})}
+                <input
+                    value={this.state.content}
+                    onChange={event => this.setState({ content: event.target.value })}
                 />
             </form>
         )
@@ -33,9 +41,9 @@ class LyricCreate extends Component {
 }
 
 const mutation = gql`
-mutation AddLyricToSong($content: String, $SongId: ID) {
-    addLyricToSong(content: $content, songId: $SongId) {
-      id,
+mutation AddLyricToSong($content: String, $songId: ID) {
+    addLyricToSong(content: $content, songId: $songId) {
+      id
       lyrics {
         id,
         content
