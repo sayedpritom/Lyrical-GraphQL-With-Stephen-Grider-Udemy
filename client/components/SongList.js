@@ -6,12 +6,13 @@ import query from '../queries/fetchSongs'
 
 class SongList extends Component {
 
+    // helper method 1
     onSongDelete(id) {
         this.props.mutate({ variables: { id } })
             .then(() => this.props.data.refetch())
     }
 
-    // helper method
+    // helper method 2
     renderSongs() {
         return this.props.data.songs.map(({ id, title }) => {
             return (
@@ -24,9 +25,11 @@ class SongList extends Component {
     }
 
     render() {
+        
         if (this.props.data.loading) {
             return <div>Loading</div>
         }
+
         return (
             <div>
                 <ul className='collection'>

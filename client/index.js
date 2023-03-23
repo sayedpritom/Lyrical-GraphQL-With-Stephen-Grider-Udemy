@@ -11,7 +11,9 @@ import song from './components/SongList'
 import SongCreate from './components/SongCreate'
 import SongDetail from './components/SongDetail';
 
-const client = new ApolloClient({})
+const client = new ApolloClient({
+  dataIdFromObject: o => o.id
+})
 // a new instance of apollo client to be passed into apollo provider
 // "{}" this is an empty configuration object
 

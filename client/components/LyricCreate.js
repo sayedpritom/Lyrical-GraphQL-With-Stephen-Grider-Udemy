@@ -18,12 +18,18 @@ class LyricCreate extends Component {
                 content: this.state.content,
                 songId: this.props.songId
             }
-        }).catch((err) => {
-            const errors = err.graphQLErrors.map((error) => {
-                return error.message;
-              });
-            console.log(errors);
         })
+            .then(() => {
+                
+            })
+            .catch((err) => {
+                const errors = err.graphQLErrors.map((error) => {
+                    return error.message;
+                });
+                console.log(errors);
+            })
+
+            this.setState({ content: '' })
 
     }
 
