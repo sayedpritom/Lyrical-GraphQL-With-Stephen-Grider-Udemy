@@ -7,7 +7,6 @@ import SongList from './components/SongList';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import App from './components/App'
-import song from './components/SongList'
 import SongCreate from './components/SongCreate'
 import SongDetail from './components/SongDetail';
 
